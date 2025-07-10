@@ -1,0 +1,86 @@
+<!--pages/login/login.wxml-->
+<view class="login-container">
+  <!-- 顶部装饰 -->
+  <view class="header-decoration">
+    <view class="decoration-circle circle-1"></view>
+    <view class="decoration-circle circle-2"></view>
+    <view class="decoration-circle circle-3"></view>
+  </view>
+
+  <!-- 标题区域 -->
+  <view class="title-section">
+    <text class="main-title">欢迎来到知识竞赛</text>
+    <text class="sub-title">请完善您的个人信息</text>
+  </view>
+
+  <!-- 错误提示区域 -->
+  <view class="error-section" wx:if="{{error}}">
+    <view class="error-message">
+      <text class="error-icon">⚠️</text>
+      <text class="error-text">{{error}}</text>
+    </view>
+    <button class="retry-btn" bindtap="retryLogin" size="mini">
+      重试
+    </button>
+  </view>
+
+  <!-- 用户信息区域 -->
+  <view class="userinfo-section">
+    <!-- 头像选择 -->
+    <view class="avatar-section">
+      <text class="section-label">选择头像</text>
+      <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+        <image class="avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view class="avatar-edit-icon">
+          <text class="edit-text">编辑</text>
+        </view>
+      </button>
+    </view>
+
+    <!-- 昵称输入 -->
+    <view class="nickname-section">
+      <text class="section-label">设置昵称</text>
+      <view class="nickname-wrapper">
+        <input 
+          type="nickname" 
+          class="nickname-input" 
+          placeholder="请输入您的昵称" 
+          value="{{userInfo.nickName}}"
+          bind:change="onInputChange" 
+        />
+        <view class="input-border"></view>
+      </view>
+    </view>
+
+    <!-- 兼容旧版本的获取用户信息按钮 -->
+    <block wx:if="{{!hasUserInfo && canIUseGetUserProfile && !canIUseNicknameComp}}">
+      <view class="legacy-section">
+        <text class="section-label">快速获取信息</text>
+        <button 
+          class="legacy-btn" 
+          bindtap="getUserProfile"
+          loading="{{isLoading}}"
+        >
+          一键获取头像昵称
+        </button>
+      </view>
+    </block>
+  </view>
+
+  <!-- 操作按钮区域 -->
+  <view class="action-section">
+    <button 
+      class="login-btn {{hasUserInfo ? 'active' : 'disabled'}}" 
+      bindtap="onLoginComplete"
+      loading="{{isLoading}}"
+      disabled="{{!hasUserInfo || isLoading}}"
+    >
+      {{isLoading ? '登录中...' : '登录'}}
+    </button>
+  </view>
+
+  <!-- 底部说明 -->
+  <view class="footer-note">
+    <text class="note-text">我们承诺保护您的隐私信息</text>
+  </view>
+</view> 

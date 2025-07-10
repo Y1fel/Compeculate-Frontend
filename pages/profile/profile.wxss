@@ -1,0 +1,465 @@
+/* pages/profile/profile.wxss */
+.container {
+  min-height: 100vh;
+  background: #f5f7fa;
+  padding: 0;
+}
+
+/* 用户信息卡片 */
+.user-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40rpx 260rpx 40rpx;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.user-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(180deg); }
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+  margin-right: 30rpx;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.user-level {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.edit-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  border-radius: 20rpx;
+  padding: 10rpx 20rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+  backdrop-filter: blur(10rpx);
+}
+
+.edit-btn::after {
+  border: none;
+}
+
+.continuous-days {
+  display: flex;
+  align-items: center;
+  margin-top: 30rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.days-icon {
+  font-size: 32rpx;
+  margin-right: 15rpx;
+}
+
+.days-text {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+
+/* 统计卡片 */
+.stats-card {
+  background: #ffffff;
+  height: 600rpx;
+  width: 500rpx;
+  margin: -20rpx 40rpx 40rpx;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 4;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.stats-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.refresh-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.refresh-btn:active {
+  background: #e9ecef;
+  transform: scale(0.95);
+}
+
+.refresh-icon {
+  font-size: 28rpx;
+  color: #667eea;
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400rpx;
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 4rpx solid #f3f3f3;
+  border-top: 4rpx solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+/* 错误状态 */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400rpx;
+  padding: 40rpx;
+}
+
+.error-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.error-text {
+  font-size: 28rpx;
+  color: #666666;
+  text-align: center;
+  margin-bottom: 30rpx;
+  line-height: 1.5;
+}
+
+.retry-btn {
+  background: #667eea;
+  color: #ffffff;
+  border: none;
+  border-radius: 20rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+  transition: all 0.3s ease;
+}
+
+.retry-btn:active {
+  background: #5a6fd8;
+  transform: scale(0.95);
+}
+
+.retry-btn::after {
+  border: none;
+}
+
+.stats-more {
+  font-size: 26rpx;
+  color: #667eea;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30rpx;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+}
+
+.stat-number {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 8rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* 成就卡片 */
+.achievements-card {
+  background: #ffffff;
+  margin: 0 40rpx 40rpx;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.achievement-count {
+  font-size: 26rpx;
+  color: #667eea;
+}
+
+.achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25rpx;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.achievement-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+}
+
+.achievement-icon.unlocked {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #ffffff;
+}
+
+.achievement-icon.locked {
+  background: #f0f0f0;
+  color: #999999;
+}
+
+.achievement-info {
+  flex: 1;
+}
+
+.achievement-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.achievement-desc {
+  font-size: 24rpx;
+  color: #666666;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6rpx;
+  background: #f0f0f0;
+  border-radius: 3rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 3rpx;
+  transition: width 0.3s ease;
+}
+
+.achievement-status {
+  margin-left: 20rpx;
+}
+
+.status-text {
+  font-size: 24rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+.status-text.unlocked {
+  background: #e8f5e8;
+  color: #52c41a;
+}
+
+.status-text.locked {
+  background: #f0f0f0;
+  color: #999999;
+}
+
+/* 最近记录 */
+.records-card {
+  background: #ffffff;
+  margin: 0 40rpx 40rpx;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.records-more {
+  font-size: 26rpx;
+  color: #667eea;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25rpx;
+}
+
+.record-item {
+  padding: 25rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.record-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.record-score {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.record-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-label {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.detail-value {
+  font-size: 24rpx;
+  color: #333333;
+}
+
+/* 功能菜单 */
+.menu-section {
+  background: #ffffff;
+  margin: 0 40rpx 40rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 40rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:active {
+  background: #f8f9fa;
+}
+
+.menu-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+}
+
+.menu-text {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.menu-arrow {
+  font-size: 28rpx;
+  color: #999999;
+} 

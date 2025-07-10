@@ -1,0 +1,77 @@
+/* 答题页面样式 */
+.quiz-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 30rpx;
+}
+
+.timer-bar {
+  width: 100%;
+  max-width: 500rpx;
+  height: 32rpx;
+  background: #e0e0e0;
+  border-radius: 16rpx;
+  margin: 48rpx 0 32rpx 0;
+  position: relative;
+  overflow: hidden;
+}
+.timer-inner {
+  height: 100%;
+  background: linear-gradient(90deg, #43e97b, #38f9d7);
+  border-radius: 16rpx 0 0 16rpx;
+  transition: width 0.2s linear;
+}
+.timer-text {
+  position: absolute;
+  right: 16rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+.formula-section {
+  margin: 60rpx 0 40rpx 0;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #222;
+  text-align: center;
+}
+.answer-section {
+  width: 100%;
+  max-width: 500rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 40rpx;
+}
+.answer-btn {
+  width: 100%;
+  margin: 0 0 32rpx 0;
+  height: 90rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 16rpx rgba(102, 126, 234, 0.15);
+  transition: all 0.2s;
+}
+.answer-btn:last-child {
+  margin-bottom: 0;
+}
+.answer-btn:active {
+  background: linear-gradient(90deg, #43e97b, #38f9d7);
+  color: #222;
+}
+.answer-btn.wrong-active {
+  background: linear-gradient(90deg, #ff4e50, #f9d423) !important;
+  color: #fff !important;
+  border: 2rpx solid #ff4e50;
+  box-shadow: 0 4rpx 16rpx rgba(255, 78, 80, 0.15);
+} 

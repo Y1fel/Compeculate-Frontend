@@ -1,0 +1,18 @@
+<view class="result-container">
+  <view class="result-card">
+    <text class="result-title">答题结算</text>
+    <view class="result-info">
+      <text>答题总数：{{total}}</text>
+      <text>正确数：{{correct}}</text>
+      <text>正确率：{{accuracy}}%</text>
+      <text>得分：{{score}}</text>
+    </view>
+    
+    <!-- 提交状态 -->
+    <view wx:if="{{submitting}}" class="submitting-status">
+      <text class="submitting-text">正在提交结果...</text>
+    </view>
+    
+    <button class="back-btn" bindtap="goHome">返回首页</button>
+  </view>
+</view> 

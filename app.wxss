@@ -1,0 +1,59 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+/* 美化TabBar样式 */
+.tab-bar-item {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab-bar-item.active {
+  transform: translateY(-2rpx);
+}
+
+/* 自定义TabBar文字样式 */
+.tab-bar-text {
+  font-weight: 500;
+  font-size: 32rpx;
+  transition: all 0.3s ease;
+}
+
+.tab-bar-text.active {
+  font-weight: 600;
+  font-size: 34rpx;
+  transform: scale(1.05);
+}
+
+/* 全局滚动条样式 */
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* 全局按钮样式优化 */
+button {
+  transition: all 0.3s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* 全局卡片阴影效果 */
+.card-shadow {
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-shadow:active {
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.15);
+  transform: translateY(2rpx);
+} 

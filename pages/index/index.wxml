@@ -1,0 +1,91 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header-section">
+    <text class="main-title">答题排行榜</text>
+    <text class="sub-title">前100名玩家</text>
+  </view>
+
+  <!-- 排行榜列表 -->
+  <view class="ranking-section">
+    <!-- 加载状态 -->
+    <view wx:if="{{loading && rankingList.length === 0}}" class="loading-container">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">加载中...</text>
+    </view>
+
+    <!-- 错误状态 -->
+    <view wx:elif="{{error && rankingList.length === 0}}" class="error-container">
+      <text class="error-icon">⚠️</text>
+      <text class="error-text">{{error}}</text>
+      <button class="retry-btn" bindtap="retryLoad">重试</button>
+    </view>
+
+    <!-- 排行榜内容 -->
+    <view wx:else>
+      <!-- 前三名特殊展示 -->
+      <view class="top-three">
+        <!-- 第二名 -->
+        <view class="rank-item second" wx:if="{{rankingList[1]}}">
+          <view class="rank-number">2</view>
+          <image class="rank-avatar" src="{{rankingList[1].avatarUrl}}" mode="cover"></image>
+          <view class="rank-info">
+            <text class="rank-name">{{rankingList[1].nickName}}</text>
+            <text class="rank-score">{{rankingList[1].totalScore}}分</text>
+          </view>
+        </view>
+        
+        <!-- 第一名 -->
+        <view class="rank-item first" wx:if="{{rankingList[0]}}">
+          <view class="rank-number">1</view>
+          <image class="rank-avatar" src="{{rankingList[0].avatarUrl}}" mode="cover"></image>
+          <view class="rank-info">
+            <text class="rank-name">{{rankingList[0].nickName}}</text>
+            <text class="rank-score">{{rankingList[0].totalScore}}分</text>
+          </view>
+          <view class="crown">👑</view>
+        </view>
+        
+        <!-- 第三名 -->
+        <view class="rank-item third" wx:if="{{rankingList[2]}}">
+          <view class="rank-number">3</view>
+          <image class="rank-avatar" src="{{rankingList[2].avatarUrl}}" mode="cover"></image>
+          <view class="rank-info">
+            <text class="rank-name">{{rankingList[2].nickName}}</text>
+            <text class="rank-score">{{rankingList[2].score}}分</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 其他排名列表 -->
+      <view class="ranking-list">
+        <view class="rank-item normal" wx:for="{{rankingList}}" wx:key="id" wx:if="{{index >= 3}}" style="flex-direction: row;">
+              <view class="rank-number">{{index + 1}}</view>
+              <view class="rank-info-simple">
+                  <text class="rank-name">{{item.nickName}}</text>
+              </view>
+              <view class="rank-score">{{item.score}}分</view>
+        </view>
+      </view>
+
+      <!-- 加载更多 -->
+      <view class="load-more" wx:if="{{hasMore}}">
+        <button class="load-more-btn" bindtap="loadMoreRanking" loading="{{isLoadingMore}}">
+          <text class="load-more-text">{{isLoadingMore ? '加载中...' : '加载更多'}}</text>
+        </button>
+      </view>
+
+      <!-- 没有更多数据 -->
+      <view wx:elif="{{!hasMore && rankingList.length > 0}}" class="no-more">
+        <text class="no-more-text">没有更多数据了</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部开始比赛按钮 -->
+  <view class="bottom-section">
+    <button class="start-match-btn" bindtap="startMatch">
+      <text class="btn-text">开始比赛</text>
+    </button>
+  </view>
+</view>

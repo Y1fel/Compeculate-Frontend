@@ -1,0 +1,23 @@
+<view class="quiz-container">
+  <!-- 顶部倒计时条 -->
+  <view class="timer-bar">
+    <view class="timer-inner" style="width: {{timerPercent}}; background: {{timerBarColor}}"></view>
+    <text class="timer-text">{{timeLeft}}s</text>
+  </view>
+
+  <!-- 数学公式展示 -->
+  <view class="formula-section">
+    <text class="formula">{{formula}}</text>
+  </view>
+
+  <!-- 答案按钮 -->
+  <view class="answer-section" style="flex-direction: column;">
+    <block wx:for="{{options}}" wx:for-item="item" wx:for-index="idx" wx:key="idx">
+      <button class="answer-btn{{activeWrongIndex === idx ? ' wrong-active' : ''}}" 
+        bindtap="chooseAnswer" 
+        data-value="{{item}}" 
+        data-idx="{{idx}}"
+        >{{item}}</button>
+    </block>
+  </view>
+</view> 
